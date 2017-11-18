@@ -1,26 +1,24 @@
 
 /* task 1 */
-    function colorParagraf (){
 
-    var paragraf = document.querySelectorAll(".task1");
-
-     for (var i = 0; i < paragraf.length; i++) {
-     paragraf[i].style.backgroundColor="red";}
+  var buttonTask1 = document.querySelector('#buttonTask1');
+  function colorParagraf () {
+  	var newP = document.createElement('p');
+  newP.innerHTML = 'Привет, мир!';
+  newP.className = 'task1'
+  // newLi.style.backgroundColor = 'red';
+  divTask1.appendChild(newP);
 }
-
-colorParagraf ();
+buttonTask1.addEventListener('click', colorParagraf)
 
 /* task 2 */
 
 function shadowImg (){
 
-var shadowImg  = document.querySelectorAll(".task2");
+var shadowImg  = document.querySelectorAll("#imgTask2");
 
 for (var i = 0; i < shadowImg .length; i++) {
-    shadowImg [i].style.display="inline";
-    shadowImg [i].style.margin="40px";
-    shadowImg [i].style["boxShadow"] = "0 0 60px #999999";
-    shadowImg [i].style["width"] = "100px";
+    shadowImg [i].classList.add('task2');
   }
 }
 shadowImg ();
@@ -41,26 +39,24 @@ numberParagraf ();
 
 /* task 4 */
 
-var count = 0,
-    result = document.querySelector('#viewResult'),
-    counter = document.querySelectorAll('.task4');
+// var count = 0;
+// var addCounter = document.querySelector('.task4');
+// var result = document.querySelector('#viewResult');
 
-counter.forEach(function(element) {
-    element.addEventListener('click', counters);
-});
-
-function counters() {
-    count++;
-    result.innerHTML = count + " click button";
-}
-
+// function addCount() {
+//     count++;
+//     result.innerHTML = count + " click button";
+// }
+// addCounter.forEach(function (elem) {
+//     elem.addEventListener('click', addCount);
+// });
 
 /*Task 5*/
 
 document.querySelector('#buttonPow').addEventListener('click',pow);
 function pow () {
-var a = document.querySelector('#firstNmber').value,
-    b = document.querySelector('#secondNumber').value;
+var a = document.querySelector('#firstNmber').value;
+var b = document.querySelector('#secondNumber').value;
 viewFunctionPow.innerHTML = Math.pow (a,b);
 
 }
@@ -68,25 +64,25 @@ viewFunctionPow.innerHTML = Math.pow (a,b);
 /*Task 6*/
 
 
-function textUnderline() {
+function addTextUnderline() {
     var oneTag = document.getElementById('tagTask6').value,
         tagName = document.querySelectorAll(oneTag);
 
         tagName.forEach(function(element){
-        element.style.textDecoration = "underline";
+        element.classList.add('task6');
 
         })
       }
-document.querySelector('#buttonTask6').addEventListener('click', textUnderline);
+document.querySelector('#buttonTask6').addEventListener('click', addTextUnderline);
 
 
 /*Task7*/
 
-enterVerify = document.getElementById("enterVerify"),
+var enterVerify = document.getElementById("enterVerify");
 
-viewAge = document.querySelector('.viewAge');
+var viewAge = document.querySelector('.viewAge');
 
-function verifyAge (){
+function checkVerifyAge (){
 
 var age = +document.querySelector('#inputAge').value;
 
@@ -99,136 +95,111 @@ else if (age < 16)
    viewAge.innerHTML = "Вы ещё молоды"
 }
 }
-enterVerify.addEventListener("click", verifyAge);
+enterVerify.addEventListener("click", checkVerifyAge);
 
 
 
 /*Task8*/
 
-enterVerifyTask8 = document.getElementById("enterVerifyTask8"),
-viewAgeTask8 = document.querySelector('.viewAgeTask8');
+var enterVerifyTask8 = document.getElementById("enterVerifyTask8");
+var viewAgeTask8 = document.querySelector('.viewAgeTask8');
 
-function verifyAgeTask8 (){
+function checkVerifyAgeTask8 (){
 
-var ageTask8 = document.querySelector('#inputAgeTask8').value,
-small = "Вы ещё молоды",  
-big = "Добро пожаловать",
-notValue = "Введите возраст";
+var ageTask8 = document.querySelector('#inputAgeTask8').value;
+var small = "Вы ещё молоды";  
+var big = "Добро пожаловать";
+var notValue = "Введите возраст";
 
-if (ageTask8 === "" || isNaN(ageTask8)){
-
-  return notValue;
+	if (ageTask8 === "" || isNaN(ageTask8)){
+  	  return notValue;
+	} else if (ageTask8 >= 16) {
+       return big;
+	} else (ageTask8 < 16) 
+  	   return small;
+	
 }
 
-else if (ageTask8 >= 16) {
-
-   return big;
-}
-else (ageTask8 < 16)
-
-  return small;
-}
 enterVerifyTask8.onclick = function () {
-  viewAgeTask8.innerHTML = verifyAgeTask8();
+  viewAgeTask8.innerHTML = checkVerifyAgeTask8();
 }
 
 /* Task 9*/
 
-var arr = [1, 2, 3, 4, 5],
+var arr = [1, 2, 3, 4, 5];
+var considerArr = document.querySelector('#considerArr');
+var viewResultTask9 = document.querySelector('#viewResultTask9');
 
-considerArr = document.querySelector('#considerArr'),
-
-viewResultTask9 = document.querySelector('#viewResultTask9');
-
-function arrLenght (arr) {
+function outputArrLenght (arr) {
 
 var arrLenghtError = 'Ошибка';
 
-if (arr === undefined) {
-
-return arrLenghtError;
-
+ if (arr === undefined) {
+    return arrLenghtError;
+  }
+   else {
+    return (arr.length);
+  }
 }
-
-else {
-
-return (arr.length);
-}
-
-}
-
 considerArr.onclick = function () {
-  viewResultTask9.innerHTML = arrLenght(arr);
+  viewResultTask9.innerHTML = outputArrLenght(arr);
 }
 
 /*Task10*/
 
-
-function countTask10 (){
+function viewCountTask10 (){
 
 var count = parseInt(document.querySelector('#task10').value);
-
   if (count < 7) 
-  {
+   {
     return ('Число меньше!');
-  }
-  else if (count > 10)
-  {
+   }
+    else if (count > 10)
+   {
     return (count *= count);
-  }
-  else
-  {
-  return (--count);
-  }
+   }
+    else
+   {
+    return (--count);
+   }
 }
 
 var viewResultTask10 = document.querySelector('#viewResultTask10');
 var submit = document.querySelector('#ButtonTask10');
 
 submit.onclick = function (){
-
-  viewResultTask10.innerHTML= countTask10();
+ viewResultTask10.innerHTML= viewCountTask10();
 
 }
 
 /*Task11*/
 
-var prNum = Math.floor((Math.random()*10) + 1);
-          var tempOut = document.querySelector("#temp-out");
-              console.log(prNum);
-
-        function guessesNumber() {
-          var 
-          num, 
-          guesses,
-          guessCount = 1, 
-          out; 
-        
-          num = document.querySelector("#mynum").value;
-          out = document.querySelector("#out");
-          guesses = document.querySelector("#guesses");
-
-          if (guessCount === 1)
-           {
-           guesses.textContent = 'Число которое вы уже вводили: ';
-           }
-           guesses.textContent += num + ' ';
-           
-          if (num == prNum) {
-            out.innerHTML = "Вы угадали";
-          }
-
-          else if ( num > prNum ) {
-
-            out.innerHTML = "Вы ввели число больше чем нужно";
-          }
-
-          else 
-          {
-            out.innerHTML = "Вы ввели число число меньше чем нужно";
-          }
-
-
+          var prNum = Math.floor((Math.random()*10) + 1);
+          var countTask10 = 2;  
+      function guessesNumber() { 
+        if (countTask10 > 0)
+        {
+            var num = parseInt(document.querySelector("#mynum").value);
+            var out = document.querySelector("#out");
+            var guesses = document.querySelector("#guesses");
+             guesses.innerHTML = 'Число которое вы уже вводили: ';
+             guesses.innerHTML += num + ' ';
+              if (num == prNum ) {
+              out.innerHTML = "Вы угадали";
+              }
+              else if ( num > prNum ) {
+              out.innerHTML = "Вы ввели число больше чем нужно";
+              }
+              else if (num < prNum){
+              out.innerHTML = "Вы ввели число число меньше чем нужно";
+              }
+             countTask10 = countTask10 - 1;
+             document.getElementById('countTask10').innerHTML = 'Осталось попыток: ' + countTask10;
+        }        
+        else 
+        {
+            alert ('Вы проиграли! Страница будет перезагружена');
+            location.reload();
         }
-          
+      }   
           buttonTask11.addEventListener('click', guessesNumber);
